@@ -6,5 +6,4 @@ In Horse Racing there is an approximate ~35% chance of the favorite horse winnin
 
 With a combination of high prediction accuracy and expected returns the boomers stand no chance.
 
-> It's immoral to let a sucker keep his money 
-> - Canada Bill Jones
+> It's immoral to let a sucker keep his money  - Canada Bill Jones
