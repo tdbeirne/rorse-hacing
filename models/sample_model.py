@@ -20,7 +20,8 @@ NAME = f"{DENSE_LAYER_SIZE}-dense-{DROPOUT_RATE}-drop-{int(time.time())}"
 print(NAME)
 
 model = Sequential()
-model.add(Dense(DENSE_LAYER_SIZE/2, activation='relu'))
+
+model.add(Dense(DENSE_LAYER_SIZE/2, activation='relu',input_layer=())) #input layer
 model.add(BatchNormalization())
 model.add(Dropout(DROPOUT_RATE))
 
@@ -32,7 +33,7 @@ model.add(Dense(128, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dropout(DROPOUT_RATE))
 
-model.add(Dense(2, activation='softmax'))
+model.add(Dense(10, activation='softmax'))
 
 tensorboard = TensorBoard(log_dir=f"tensorboard_logs\{NAME}")
 
