@@ -4,7 +4,7 @@ from tensorflow.keras.layers import Dense, BatchNormalization, Dropout
 from tensorflow.keras.models import Sequential
 
 # Need to implement data
-horse_runs = np.loadtxt(open("data/runs.csv", "rb"),  delimiter=",", skiprows=1)
+horse_runs = np.loadtxt(open("data/runs2.csv", "rb"),  delimiter=",", skiprows=1)
 
 quit()
 
