@@ -21,21 +21,24 @@ y = np.delete(horse_runs, delete_indicies ,1)
 train_size = 70000
 x_train = x[:train_size]
 x_test = x[train_size:]
+
 y_train = y[:train_size]
 y_test = y[train_size:]
 
+quit()
+
 
 EPOCHS = 10
-BATCH_SIZE = 128
-DENSE_LAYER_SIZE = 256
-DROPOUT_RATE = 0.3
+BATCH_SIZE = 512
+DENSE_LAYER_SIZE = 2048
+DROPOUT_RATE = 0.4
 
 NAME = f"{DENSE_LAYER_SIZE}-dense-{DROPOUT_RATE}-drop-{int(time.time())}"
 print(NAME)
 
 model = Sequential()
 
-model.add(Dense(DENSE_LAYER_SIZE//2, activation='relu', input_shape=(20,) )) #input layer shape
+model.add(Dense(DENSE_LAYER_SIZE/2, activation='relu', input_shape=(20,) )) #input layer shape
 model.add(BatchNormalization())
 model.add(Dropout(DROPOUT_RATE))
 
@@ -43,7 +46,7 @@ model.add(Dense(DENSE_LAYER_SIZE, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dropout(DROPOUT_RATE))
 
-model.add(Dense(DENSE_LAYER_SIZE//2, activation='relu'))
+model.add(Dense(DENSE_LAYER_SIZE/2, activation='relu'))
 model.add(BatchNormalization())
 model.add(Dropout(DROPOUT_RATE))
 
@@ -56,11 +59,12 @@ model.compile(optimizer="adam",
             loss='binary_crossentropy',
             metrics=['accuracy'])
 
+model.summary()
+
 model.fit(x_train, y_train, batch_size=BATCH_SIZE, verbose=1,
         epochs=EPOCHS, validation_data=(x_test, y_test))
 
 model.evaluate(x_test, y_test, verbose=2)
 
-input("Would you like to save the model? (Press ANY key too save.)")
-
-model.save(f'models/{NAME}.h5')
+if input("Would you like to save the model? (Press ENTER key too save.)") != '':
+        model.save(f'trained_models/{NAME}.h5')
