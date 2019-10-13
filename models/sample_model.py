@@ -4,8 +4,10 @@ from tensorflow.keras.layers import Dense, BatchNormalization, Dropout
 from tensorflow.keras.models import Sequential
 
 # Need to implement data
-horse_runs = np.loadtxt(open("data/runs2.csv", "rb"),  delimiter=",", skiprows=1)
-
+horse_runs = np.loadtxt(open("data/runs_augmented.csv", "r"),  delimiter=",", skiprows=1)
+# WARNING: if you try to re-train a model on re-shuffled data IT WILL MEMORIZE IT!!
+# np.random.shuffle(horse_runs) 
+print(horse_runs)
 quit()
 
 (x_train, y_train), (x_test, y_test) = horse_runs.load_data()
