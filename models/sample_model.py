@@ -11,11 +11,11 @@ horse_runs = np.loadtxt(open("data/runs_augmented.csv", "r"),  delimiter=",", sk
 np.random.shuffle(horse_runs) 
 
 # Remove IDs and Place/Win
-x = np.delete(horse_runs,[0,1,2,3,10,11,24],1) # 1-3 are ids, 10&11 are labels, 24 is time to finish
+x = np.delete(horse_runs,[0,1,2,3,4,11,12,25],1) # 1-4 are ids, 11&12 are labels, 25 is time to finish
 
-# 10 is the place order label
-# 11 is the win label
-delete_indicies = [x for x in range(0,len(horse_runs[0])) if x != 11]
+# 11 is the place order label
+# 12 is the win label
+delete_indicies = [x for x in range(0,len(horse_runs[0])) if x != 12]
 y = np.delete(horse_runs, delete_indicies ,1)
 
 train_size = 70000
